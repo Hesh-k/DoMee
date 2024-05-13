@@ -3,7 +3,6 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("kotlin-android")
     id("kotlin-kapt")
-    // Add kotlin-parcelize plugin
     id("kotlin-parcelize")
 }
 
@@ -21,10 +20,7 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
-    // Enable View Binding
-    buildFeatures {
-        viewBinding = true
-    }
+
 
     buildTypes {
         release {
@@ -42,6 +38,10 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    // Enable View Binding
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
@@ -54,9 +54,12 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
     // room
-    def room_version = "2.6.1"
-    implementation("androidx.room:room-runtime:$room_version")
-    annotationProcessor("androidx.room:room-compiler:$room_version")
-    kapt("androidx.room:room-compiler:$room_version")
-    implementation("androidx.room:room-ktx:$room_version")
+    // room
+//    def room_version = "2.3.0"
+    implementation("androidx.room:room-runtime:2.3.0")
+//    annotationProcessor "androidx.room:room-compiler:2.3.0"
+    kapt("androidx.room:room-compiler:2.3.0")
+
+    kapt("androidx.room:room-compiler:2.3.0")
+    implementation("androidx.room:room-ktx:2.3.0")
 }
