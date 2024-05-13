@@ -3,7 +3,7 @@ package com.heshan.domee
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "To_Do")
+@Entity(tableName = "DoMee")
 data class Entity(
     @PrimaryKey(autoGenerate = true)
     var id:Int,

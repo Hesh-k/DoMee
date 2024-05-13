@@ -19,7 +19,7 @@ class CreateCard : AppCompatActivity() {
         setContentView(binding.root)
 
         database = Room.databaseBuilder(
-            applicationContext, myDatabase::class.java, "To_Do"
+            applicationContext, myDatabase::class.java, "DoMee"
         ).build()
 
         binding.saveButton.setOnClickListener {
