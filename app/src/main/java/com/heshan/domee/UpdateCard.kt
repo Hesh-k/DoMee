@@ -28,7 +28,10 @@ class UpdateCard : AppCompatActivity() {
                 val allData = database.dao().getTasks()
                 val task = allData[pos] as Entity
                 binding.createTitle.setText(task.title)
-                binding.createPriority.setText(task.priority)
+
+                // Set the selected item in the Spinner
+                val priorities = resources.getStringArray(R.array.priority_array)
+                binding.createPriority.setSelection(priorities.indexOf(task.priority))
 
                 binding.deleteButton.setOnClickListener {
                     GlobalScope.launch {
@@ -41,7 +44,8 @@ class UpdateCard : AppCompatActivity() {
                     val updatedTask = Entity(
                         id = task.id,
                         title = binding.createTitle.text.toString(),
-                        priority = binding.createPriority.text.toString()
+                        // Get the selected item from the Spinner
+                        priority = binding.createPriority.selectedItem.toString()
                     )
                     GlobalScope.launch {
                         database.dao().updateTask(updatedTask)

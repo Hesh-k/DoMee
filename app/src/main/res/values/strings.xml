@@ -10,4 +10,13 @@
     <string name="update">Update</string>
     <string name="delete">Delete</string>
     <string name="update_detail">Update Details</string>
+
+    <string-array name="priority_array">
+
+            <item>Low</item>
+            <item>Medium</item>
+            <item>High</item>
+    </string-array>
+
+
 </resources>

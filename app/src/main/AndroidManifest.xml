@@ -16,7 +16,7 @@
 
         <activity
             android:name=".SplashScreen"
-            android:exported="true"> <!-- or android:exported="false" if you don't want it to be accessible from other apps -->
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

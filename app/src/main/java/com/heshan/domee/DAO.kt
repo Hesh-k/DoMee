@@ -4,6 +4,8 @@ import androidx.room.*
 
 @Dao
 interface DAO {
+
+    // Insert, update, delete, and query methods for the database
     @Insert
     suspend fun insertTask(entity: Entity)
 
@@ -15,9 +17,6 @@ interface DAO {
 
     @Query("DELETE FROM DoMee")
     suspend fun deleteAll()
-
-//    @Query("SELECT * FROM DoMee")
-//    suspend fun getTasks(): List<CardInfo>
 
     @Query("SELECT * FROM DoMee")
     suspend fun getTasks(): List<Entity>
