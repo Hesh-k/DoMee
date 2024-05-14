@@ -2,4 +2,12 @@
     <string name="app_name">DoMee</string>
     <string name="name_splash">DoMee</string>
     <string name="name_tag">Manage Tasks Easily</string>
+    <string name="task">Your Tasks</string>
+    <string name="enter">Enter Details</string>
+    <string name="task_title">Task Title</string>
+    <string name="priority">Priority</string>
+    <string name="save">Save</string>
+    <string name="update">Update</string>
+    <string name="delete">Delete</string>
+    <string name="update_detail">Update Details</string>
 </resources>

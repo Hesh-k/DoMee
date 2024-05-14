@@ -19,7 +19,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Update Details"
+        android:text="@string/update_detail"
         android:textColor="@color/white"
         android:textSize="36sp"
         android:gravity="center"
@@ -29,7 +29,7 @@
         android:id="@+id/create_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter Task"
+        android:hint="@string/enter"
         android:layout_marginTop="30dp"
         android:padding="15dp"
         android:background="@drawable/custom_edittetext"
@@ -42,7 +42,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:hint="Priority"
+        android:hint="@string/priority"
         android:padding="15dp"
         android:background="@drawable/custom_edittetext"
         android:textColorHint="#BFBBBB"
@@ -58,7 +58,7 @@
             android:id="@+id/update_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Update"/>
+            android:text="@string/update"/>
 
         <View
         android:layout_width="0dp"
@@ -70,7 +70,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="#FF5722"
-            android:text="Delete"/>
+            android:text="@string/delete"/>
     </LinearLayout>
 
 </LinearLayout>
