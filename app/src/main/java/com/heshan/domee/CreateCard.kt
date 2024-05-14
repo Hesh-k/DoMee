@@ -5,9 +5,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.room.Room
-import com.heshan.domee.databinding.ActivityCreateCardBinding // Import your ViewBinding class
-import kotlinx.coroutines.GlobalScope
+import androidx.lifecycle.lifecycleScope
+import com.heshan.domee.databinding.ActivityCreateCardBinding // Import ViewBinding class
 import kotlinx.coroutines.launch
+import android.util.Log // Import Log class
+import kotlinx.coroutines.delay // Import delay function
+
+
 
 class CreateCard : AppCompatActivity() {
     private lateinit var database: myDatabase
@@ -27,11 +31,16 @@ class CreateCard : AppCompatActivity() {
             val priority = binding.createPriority.text.toString().trim()
 
             if (title.isNotEmpty() && priority.isNotEmpty()) {
-                GlobalScope.launch {
+                lifecycleScope.launch {
                     database.dao().insertTask(Entity(0, title, priority))
+                    Log.d("CreateCard", "Task inserted into database at ${System.currentTimeMillis()}: Entity(0, $title, $priority)")
+
+                    val allData = database.dao().getTasks()
+                    Log.d("MainActivity", "Data retrieved from database at ${System.currentTimeMillis()}: $allData ")
+                    delay(500) // Wait for 500 milliseconds
+                    val intent = Intent(this@CreateCard, MainActivity::class.java)
+                    startActivity(intent)
                 }
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
             } else {
                 Toast.makeText(this, "Title and Priority cannot be empty", Toast.LENGTH_SHORT).show()
             }

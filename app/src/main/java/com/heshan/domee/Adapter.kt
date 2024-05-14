@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.heshan.domee.databinding.ViewBinding // Import your ViewBinding class
 import java.util.*
 
-class Adapter(private var data: List<CardInfo>) : RecyclerView.Adapter<Adapter.ViewHolder>() {
+class Adapter(private var data: List<Entity>) : RecyclerView.Adapter<Adapter.ViewHolder>() {
 
     inner class ViewHolder(private val binding: ViewBinding) : RecyclerView.ViewHolder(binding.root) {
         // You can access views using the binding object

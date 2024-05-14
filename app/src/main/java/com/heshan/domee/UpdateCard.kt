@@ -3,6 +3,7 @@ package com.heshan.domee
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.lifecycle.lifecycleScope
 import androidx.room.Room
 import com.heshan.domee.databinding.ActivityUpdateCardBinding // Import your ViewBinding class
 import kotlinx.coroutines.GlobalScope
@@ -23,40 +24,30 @@ class UpdateCard : AppCompatActivity() {
 
         val pos = intent.getIntExtra("id", -1)
         if (pos != -1) {
-            val title = DataObject.getData(pos).title
-            val priority = DataObject.getData(pos).priority
-            binding.createTitle.setText(title)
-            binding.createPriority.setText(priority)
+            lifecycleScope.launch {
+                val allData = database.dao().getTasks()
+                val task = allData[pos] as Entity
+                binding.createTitle.setText(task.title)
+                binding.createPriority.setText(task.priority)
 
-            binding.deleteButton.setOnClickListener {
-                DataObject.deleteData(pos)
-                GlobalScope.launch {
-                    database.dao().deleteTask(
-                        Entity(
-                            pos + 1,
-                            binding.createTitle.text.toString(),
-                            binding.createPriority.text.toString()
-                        )
-                    )
+                binding.deleteButton.setOnClickListener {
+                    GlobalScope.launch {
+                        database.dao().deleteTask(task.id)
+                    }
+                    myIntent()
                 }
-                myIntent()
-            }
 
-            binding.updateButton.setOnClickListener {
-                DataObject.updateData(
-                    pos,
-                    binding.createTitle.text.toString(),
-                    binding.createPriority.text.toString()
-                )
-                GlobalScope.launch {
-                    database.dao().updateTask(
-                        Entity(
-                            pos + 1, binding.createTitle.text.toString(),
-                            binding.createPriority.text.toString()
-                        )
+                binding.updateButton.setOnClickListener {
+                    val updatedTask = Entity(
+                        id = task.id,
+                        title = binding.createTitle.text.toString(),
+                        priority = binding.createPriority.text.toString()
                     )
+                    GlobalScope.launch {
+                        database.dao().updateTask(updatedTask)
+                    }
+                    myIntent()
                 }
-                myIntent()
             }
         }
     }
